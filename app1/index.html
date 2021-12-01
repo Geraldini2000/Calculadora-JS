@@ -59,7 +59,7 @@
             <div class="row">                                          <!-- onclick para rodar a funcao    'tipo' , valor    -->
               <button type="button" class="btn btn-dark btn-lg clear font-weight-light" onclick="calcular('acao', 'c')">C</button>
               <button type="button" class="btn btn-dark btn-lg font-weight-light" onclick="calcular('acao', '/')">/</button>
-              <button type="button" class="btn btn-dark btn-lg font-weight-light" onclick="calcular('acao', 'x')">x</button>
+              <button type="button" class="btn btn-dark btn-lg font-weight-light" onclick="calcular('acao', '*')">x</button>
             </div>
 
             <div class="row">
@@ -92,30 +92,33 @@
         </div>
       </div>
     </div> 
-    <script src=""></script>
     
       <script>
-
-        // funcao        tipo = tipo do elemento ex acao ,  valor = valor so elemento ex 10
         function calcular(tipo, valor){
 
           console.log(tipo, valor)
 
-// Primeiro passo : descobrir qual o valor so tipo
-          if(tipo === 'acao'){
-            
-            
-            document.getElementById('resultado').value = campo + valor  
+        if(tipo === 'acao'){ 
 
-          }else if (tipo === 'valor'){
+        if(valor == 'c'){ 
+          document.getElementById('resultado').value = '' 
+        }
 
-            document.getElementById('resultado').value = valor
+        if(valor == '-' || valor == '*' || valor == '+' || valor =='/' || valor == '.'){
+          document.getElementById('resultado').value += valor
+        }
+
+        if(valor == '='){
+          let valorCampo = eval(document.getElementById('resultado').value)
+          document.getElementById('resultado'). value = valorCampo
+        }
+
+         }else if (tipo === 'valor'){ 
+            document.getElementById('resultado').value +=  valor
 
           }
 
         }
-
-        alert('Ola Mundo')
 
       </script>
 
